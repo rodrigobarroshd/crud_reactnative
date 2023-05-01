@@ -1,10 +1,16 @@
-const express = require('express');
-const routes = require('./routes');
+import express from 'express';
+import mongoose from 'mongoose';
+import routes from './routes';
 
 class App{
 
   constructor(){
     this.server = express();
+
+    mongoose.connect('Sua url Aqui', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     this.middlewares();
     this.routes();
@@ -20,4 +26,4 @@ class App{
 
 }
 
-module.exports = new App().server;
+export default new App().server;
