@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'reac
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const SignIn = () => {
+const SignIn = ( { navigation } ) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,19 +20,21 @@ const SignIn = () => {
             <View style={styles.imageContainer}>
                 <Image source={require("../assets/logo.png")} style={styles.imageStyles} />
             </View>
-                <Text style={styles.signupText}>Sign In</Text>
+                <Text style={styles.signupText}>Entrar</Text>
                 <View style={{ marginHorizontal: 24 }}>
-                    <Text style={{ fontSize: 16, color: '#8e93a1' }}>EMAIL</Text>
+                    <Text style={{ fontSize: 16, color: '#8e93a1' }}>Email</Text>
                     <TextInput style={styles.signupInput} value={email} onChangeText={text => setEmail(text)} autoCompleteType="email" keyboardType="email-address" />
                 </View>
                 <View style={{ marginHorizontal: 24 }}>
-                    <Text style={{ fontSize: 16, color: '#8e93a1' }}>PASSWORD</Text>
+                    <Text style={{ fontSize: 16, color: '#8e93a1' }}>Senha</Text>
                     <TextInput style={styles.signupInput} value={password} onChangeText={text => setPassword(text)} secureTextEntry={true} autoComplteType="password" />
                 </View>
                 <TouchableOpacity onPress={handleSubmit} style={styles.buttonStyle}>
-                    <Text style={styles.buttonText}>Submit</Text>
+                    <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
-                <Text style={{ fontSize: 12, textAlign: 'center' }}>Não possui Conta ? Registre</Text>
+                <Text style={{ fontSize: 12, textAlign: 'center' }}>Não possui Conta ? {" "}
+                <Text style={{ color: "darkred", fontWeight: "bold" }} onPress={() => navigation.navigate("SignUp")}>Registrar</Text>
+                </Text>
                 <Text style={{ fontSize: 12, textAlign: 'center', marginTop: 10 }}>Recuperar Senha</Text>
             </View>
         </KeyboardAwareScrollView>

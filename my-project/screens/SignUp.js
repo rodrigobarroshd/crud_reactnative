@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const SignUp = () => {
+const SignUp = ( {navigation} ) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -69,7 +69,12 @@ const SignUp = () => {
         <TouchableOpacity onPress={handleSubmit} style={styles.buttonStyle}>
           <Text style={styles.buttonText}> Enviar</Text>
         </TouchableOpacity>
-        <Text style={{ fontSize: 12, textAlign: "center" }}> Já está registrado? Entrar</Text>
+        <Text style={{ fontSize: 12, textAlign: "center" }}> Já está registrado? {" "}
+        <Text style={{ color: "darkred", fontWeight: "bold", }}
+         onPress={() => navigation.navigate("SignIn")}> Entrar </Text>
+
+        
+         </Text>
       </View>
     </KeyboardAwareScrollView>
   );
